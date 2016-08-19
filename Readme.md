@@ -8,5 +8,4 @@ and http://advinpy.blogspot.in/
 
 The new ones which I would write later in leisure time 
 
-
- 
+Adding this manual page to the gh-pages
