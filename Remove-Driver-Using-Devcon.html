@@ -57,20 +57,23 @@ need to uninstall Citrix&#39;s mirror driver from the system.</p>
 
 <p>**<strong>do not do this in a production environment unless you know what you are upto</strong>**</p>
 
-<p><code></code>`</p>
 
-<pre><p>devcon hwids =display * 
-output 
-ROOT\DISPLAY\0000
-    Name: Citrix Display Mirror Driver
-    Hardware IDs:
+
+<blockquote >
+    <code> <p>devcon hwids =display *  <br/>
+output <br/>
+ROOT\DISPLAY\0000<br/>
+    Name: Citrix Display Mirror Driver<br/>
+    Hardware IDs:<br/>
         <i>Mirror_Driver  ---- this is the one we are going to remove</i> 
-ROOT\DISPLAY\0001
-    Name: Citrix Systems Inc. Display Mirror Driver
-    Hardware IDs:
+ROOT\DISPLAY\0001<br/>
+    Name: Citrix Systems Inc. Display Mirror Driver <br/>
+    Hardware IDs:<br/>
         ctxroot\ctxid2</p><p>REM REMOVAL <br/>
-<b>devcon remove Mirror_Driver</b> 
-<code></code>`</p></pre>
+<b>devcon remove Mirror_Driver</b>
+</p> 
+</code> 
+</blockquote>
 
 <h1>Automating stuff</h1>
 
@@ -78,10 +81,10 @@ ROOT\DISPLAY\0001
 all the machines. Post that it was a matter of getting all the machines in a csv file and then run 
 powershell script </p>
 
-<p><code></code>`</p>
 
-<blockquote><p>get-content allmachines.csv | %{ devcon -m $<em> remove Mirror</em>Driver }
-<code></code>`</p></blockquote>
+<blockquote>
+<code><p>get-content allmachines.csv | %{ devcon -m $<em> remove Mirror_Driver </em> } </code>
+`</p></blockquote>
 
 <h2>The CSV file</h2>
 
