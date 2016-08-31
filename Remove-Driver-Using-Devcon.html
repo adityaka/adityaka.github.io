@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Adityaka.GitHub.io by Aditya Kapur</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Adityaka.GitHub.io</h1>
+        <p class="view"><a href="https://github.com/adityaka">View My GitHub Profile</a></p>
+
+      </header>
+      <section>
+         
+
+<ul><li><a href="#the-story">The Story</a></li><li><a href="#wdk-to-the-rescue">WDK to the rescue</a></li><li><a href="#ordeal-with-devconexe">Ordeal with DEVCON.EXE</a></li><li><a href="#automating-stuff">Automating stuff</a><ul><li><a href="#the-csv-file">The CSV file</a></li></ul></li></ul>
+
+
+
+<h1>The Story</h1>
+
+<p>There was a time when an administrator upgraded a piece of software 
+which left some stale drivers on a windows 7 machine. The challenge was 
+we had few thousand machines which needed the removal of this stale driver.</p>
+
+<p>Windows being windows none could find a way to automate the solution. </p>
+
+<h1>WDK to the rescue</h1>
+
+<p>There were two tools from the old ddk which are now a part of WDK </p>
+
+<ul><li>devcon </li><li>pnputil </li></ul>
+
+<p>Given the research devcon.exe became the obvious choice but now the question 
+was how to use it and how to identify which entry needs removal. </p>
+
+<h1>Ordeal with DEVCON.EXE</h1>
+
+<p>Searching the devcon documentation on the msdn 
+- Obtaining devcon 
+    https://social.technet.microsoft.com/wiki/contents/articles/182.how-to-obtain-the-current-version-of-device-console-utility-devcon-exe.aspx
+- Devcon commandline utility reference 
+    https://msdn.microsoft.com/en-us/library/ff544707.aspx </p>
+
+<p>All the commands either needs a driver class e.g. Display, Net etc or hwids. Once we read 
+through the documentation it was more or less experimenting with the drivers. e.g. let&#39;s say we 
+need to uninstall Citrix&#39;s mirror driver from the system.</p>
+
+<p>**<strong>do not do this in a production environment unless you know what you are upto</strong>**</p>
+
+<p><code></code>`</p>
+
+<blockquote><p>devcon hwids =display *
+output 
+ROOT\DISPLAY\0000
+    Name: Citrix Display Mirror Driver
+    Hardware IDs:
+        Mirror_Driver  ---- this is the one we are going to remove 
+ROOT\DISPLAY\0001
+    Name: Citrix Systems Inc. Display Mirror Driver
+    Hardware IDs:
+        ctxroot\ctxid2</p><p>REM REMOVAL
+devcon remove Mirror_Driver 
+<code></code>`</p></blockquote>
+
+<h1>Automating stuff</h1>
+
+<p>Now we know our target commands we needed to figure out if the hwid of the device is same on 
+all the machines. Post that it was a matter of getting all the machines in a csv file and then run 
+powershell script </p>
+
+<p><code></code>`</p>
+
+<blockquote><p>get-content allmachines.csv | %{ devcon -m $<em> remove Mirror</em>Driver }
+<code></code>`</p></blockquote>
+
+<h2>The CSV file</h2>
+
+<p>Single column file with no headers </p>
+
+<p>Machine1
+Machine2 
+Machine3 
+...</p>
+
+<p>so on  .. </p>
+
+<p>  </p>
+
+      </section>
+      <footer>
+        <p>
+            <a href="./index.html">Back to Main Page</a>
+        </p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
