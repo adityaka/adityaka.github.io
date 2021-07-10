@@ -1,4 +1,4 @@
-#Old postings and fun facts I would like to preserve 
+# Old postings and fun facts I would like to preserve 
 
 This section contains my old writings on the web and some the fun findings,
 commands, scripts, code snippets which I stumble upon and like to preserve
