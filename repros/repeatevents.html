@@ -6,7 +6,11 @@
     <title>Repeat custom JS Events</title>
 </head>
 <body>
-    <div id="eventSink"></div>
+    <div id="eventSink">
+    </div>
+    <div id="imageSink">
+
+    </div>
     <script>
 
         let sinkDiv = document.querySelector("#eventSink");
@@ -14,7 +18,15 @@
         let handler = function(){
             let currTime = new Date()
             sinkDiv.innerHTML = `I changed the text at ${currTime.toLocaleString()}`
-            timer = setTimeout(handler, 5000);
+            fetch('https://random.imagecdn.app/v1/image', {mode:"no-cors"}).then(function(response){
+                let randImg = document.createElement("img");
+                img.src = response.text();
+                let imageSink = document.querySelector("#imageSink")
+                imageSink.appendChild(img);
+            }).catch(function(){
+                console.log("Can't fetch image")
+            })
+            timer = setTimeout(handler, 1000);
         }
         handler();
     </script>
