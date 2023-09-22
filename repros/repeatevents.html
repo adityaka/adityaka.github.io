@@ -13,7 +13,7 @@
         let timer = null;
         let handler = function(){
             let currTime = new Date()
-            sinkDiv.innerHTML = "I changed the text at ${currTime.toLocaleString()}"
+            sinkDiv.innerHTML = `I changed the text at ${currTime.toLocaleString()}`
             timer = setTimeout(handler, 5000);
         }
         handler();
