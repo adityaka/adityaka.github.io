@@ -20,11 +20,16 @@
             sinkDiv.innerHTML = `I changed the text at ${currTime.toLocaleString()}`
             fetch('https://random.imagecdn.app/v1/image', {mode:"no-cors"}).then(function(response){
                 let randImg = document.createElement("img");
-                img.src = response.text();
+                let imageurl = response.blob();
                 let imageSink = document.querySelector("#imageSink")
+                imageurl.then(function(data){
+                    randImg.src = data.text();
+                }).catch(function(err){
+                    console.log(`error reading the blob response error ${err != null ? err:"Unknown error"}`);
+                })
                 imageSink.appendChild(img);
-            }).catch(function(){
-                console.log("Can't fetch image")
+            }).catch(function(err){
+                console.log(`Can't fetch image error ${err != null? err : "Unknown error"}`)
             })
             timer = setTimeout(handler, 1000);
         }
