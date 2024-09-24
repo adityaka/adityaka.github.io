@@ -26,7 +26,7 @@ function getCard(text, htmlText) {
 }
 
 let header = getHeaderContainer("Normal web page for Web Metrics");
-document.appendChild(header);
+document.body.appendChild(header);
 imageHtml = [
     '<p class="attribution">"<a rel="noopener noreferrer" href="https://www.flickr.com/photos/35576247@N07/3293282517">dogs of Iquitos, Peru</a>" by <a rel="noopener noreferrer" href="https://www.flickr.com/photos/35576247@N07">iquitos</a> is licensed under <a rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-nd/2.0/?ref=openverse">CC BY-ND 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/nd.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /></a>.</p>',
     '<p class="attribution">"<a rel="noopener noreferrer" href="https://www.flickr.com/photos/68776313@N00/5164287">dog</a>" by <a rel="noopener noreferrer" href="https://www.flickr.com/photos/68776313@N00">jmorgan</a> is licensed under <a rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/2.0/?ref=openverse">CC BY-SA 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /></a>.</p>'
@@ -34,5 +34,5 @@ imageHtml = [
 
 imageHtml.forEach((elementText) => {
     card = getCard("", elementText);
-    document.appendChild(card);
+    document.body.appendChild(card);
 });
