@@ -36,7 +36,9 @@ imageHtml = [
     '<img src="https://live.staticflickr.com/1073/1330310701_811447bd85_b.jpg" /> <p class="attribution">"<a rel="noopener noreferrer" href="https://www.flickr.com/photos/86537045@N00/1330310701">RUM</a>" by <a rel="noopener noreferrer" href="https://www.flickr.com/photos/86537045@N00">tom-b</a> is licensed under <a rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=openverse">CC BY-NC-SA 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" style="height: 1em; margin-right: 0.125em; display: inline;" /></a>.</p>'
 ];
 
+let content = getContentContainer("", "<h2>Various images to test render stats</h2>");
+document.body.appendChild(content);
 imageHtml.forEach((elementText) => {
     card = getCard("", elementText);
-    document.body.appendChild(card);
+    content.appendChild(card);
 });
