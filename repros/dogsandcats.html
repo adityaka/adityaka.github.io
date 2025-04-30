@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head> 
+    <script>
+      window.addEventListener("GlimpseLoaded", (event) => {
+          if(null !== RProfiler || undefined !== RProfiler) {
+              RProfiler.addInfo("tracepoint", "tp1", "normalpage");
+          } else {
+              throw "RProfiler is not initialized"
+          }
+      });
+    </script>
     <script src="/javascripts/rum.js"></script>
     <title> Dogs and Cat XHR Test Page </title> 
     <style>

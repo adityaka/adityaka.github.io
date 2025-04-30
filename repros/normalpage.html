@@ -2,11 +2,13 @@
 <html>
     <head>
         <script>
-            window.addEventListener("GlimpseLoaded", (event) => {
-                if(null !== RProfiler || undefined !== RProfiler) {
-                    RProfiler.addInfo("tracepoint", "tp1", "normalpage");
-                }
-            });
+        window.addEventListener("GlimpseLoaded", (event) => {
+            if(null !== RProfiler || undefined !== RProfiler) {
+                RProfiler.addInfo("tracepoint", "tp1", "normalpage");
+            } else {
+                throw "RProfiler is not initialized"
+            }
+        });
         </script>
         <script src="/javascripts/rum.js"></script>
         <title>Regular Web page with images</title>
@@ -15,11 +17,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
-        
         <script src="/javascripts/cardsandmenus.js">
         </script>
-       
-      
-        
     </body>
 </html>
