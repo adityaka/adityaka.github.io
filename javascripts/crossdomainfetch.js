@@ -3,7 +3,7 @@ function getGithubProfiledata() {
     if (null === iFrame || undefined === iFrame) {
         throw "we need an iFrame to continue with the correct ID"
     }
-    fetchPromise = fetch("https://github.com/adityaka")
+    fetchPromise = fetch("https://github.com/adityaka", {mode:'cors'})
     fetchPromise.
     then((response) => {response.text()}).
     then((data) => {iFrame.document.innerHTML = data}).
