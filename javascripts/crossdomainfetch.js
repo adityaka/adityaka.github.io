@@ -9,3 +9,5 @@ function getGithubProfiledata() {
     then((data) => {iFrame.document.innerHTML = data}).
     catch(error=>console.error(`There was an error fetching content ${error}`));
 }
+
+getGithubProfiledata();
